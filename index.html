@@ -12,6 +12,7 @@
 			padding: 10px;
 			height: 50vh;
 			margin: 10px 0 5px 0;
+			overflow: auto;
 		}
 	</style>
 	<script src="jquery-3.1.1.min.js"></script>
@@ -25,11 +26,16 @@
 <script>
 (function($) {
 	var socket = io('http://localhost:60000');
+	socket.on('message', function(data) {
+		var div = $("<div/>").html(data.my);
+		$("#chat-view").append(div);
+	});
 	$("#chat-enter").keyup(function(e) {
 		var keycode = (e.keyCode ? e.keyCode : e.which);
 		if (keycode == '13') {
 			var send = $(this).val();
 			socket.emit('recibe', { my: send });
+			$(this).val('');
 		}
 	});
 })(jQuery);
