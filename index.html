@@ -14,11 +14,22 @@
 			margin: 10px 0 5px 0;
 		}
 	</style>
+	<script src="jquery-3.1.1.min.js"></script>
 </head>
 <body>
 <div class="container">
 <div id="chat-view"></div>
 <input type="text" class="form-control" placeholder="escribir..." id="chat-enter">
 </div>
+<script>
+(function($) {
+	$("#chat-enter").keyup(function(e) {
+		var keycode = (e.keyCode ? e.keyCode : e.which);
+		if (keycode == '13') {
+			
+		}
+	});
+})(jQuery);
+</script>
 </body>
 </html>
